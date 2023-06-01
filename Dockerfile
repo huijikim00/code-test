@@ -1,7 +1,6 @@
 FROM golang:alpine AS builder
 
 RUN mkdir /app
-RUN apk update && apk add --no-cache git
 COPY main.go /app
 
 WORKDIR /app
@@ -13,4 +12,7 @@ FROM alpine
 RUN apk update && apk add --no-cache ca-certificates
 
 COPY --from=builder /app/main /main
-CMD ["/main"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+CMD ["/entrypoint.sh"]
