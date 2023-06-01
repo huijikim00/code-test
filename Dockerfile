@@ -1,18 +1,18 @@
 FROM golang:alpine AS builder
 
-RUN mkdir /app
-COPY main.go /app
+# RUN mkdir /app
+# COPY main.go /app
 
-WORKDIR /app
+# WORKDIR /app
 
-RUN go get -d
-RUN go build -o main .
+# RUN go get -d
+# RUN go build -o main .
 
-FROM alpine
-RUN apk update && apk add --no-cache ca-certificates
+# FROM alpine
+# RUN apk update && apk add --no-cache ca-certificates
 
-COPY --from=builder /app/main /main
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# COPY --from=builder /app/main /main
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
 
-CMD ["/entrypoint.sh"]
+# CMD ["/entrypoint.sh"]
