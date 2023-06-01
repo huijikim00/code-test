@@ -17,7 +17,7 @@ hooks:
       runas: ec2-user
   AfterInstall:
     - location: scripts/after_install.sh
-#       runas: ec2-user
-#       environment:
-#         variables:
-#           GOROOT: $PATH:/usr/local/go/bin:$GOROOT
+      runas: ec2-user
+      environment:
+        variables:
+          GOROOT: $PATH:/usr/local/go/bin:$GOROOT
